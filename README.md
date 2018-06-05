@@ -35,7 +35,7 @@ axes.plot()
 # Installation:
 1: Copy paste psycochart.py in your directory (folder containing other codes).
 
-2: Run test.py to test the code. If you get errors contact me.
+2: Run example.py to test/understand the code. If you get errors, contact me.
 
 # Code Prerequisites:
 CoolProp version: 6.1.1 or higher - clone it using GIT
