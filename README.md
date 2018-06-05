@@ -6,7 +6,7 @@ Code to print psychometric charts easily in python. The following steps demostra
 2: Call psycochart.plot_psy_chart function.
 3: If required plot additional points on the chart.
 
-# Example:
+# Example: 
 
 import matplotlib.pyplot as plt
 import psycochart_full as psycochart
