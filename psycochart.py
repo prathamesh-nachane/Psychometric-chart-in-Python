@@ -44,7 +44,6 @@ def plot_psy_chart(x_low_limit = -10,x_upp_limit = 60,y_low_limit = 0,y_upp_limi
             for WB in WB_lines:
                 #Line goes from saturation to zero humidity ratio for this enthalpy
                 T1 = HAPropsSI('T','Twb',WB,'P',p,'R',1.0)-273.15-2
-                print(WB,p)
                 T0 = HAPropsSI('T','Twb',int(WB),'P',int(p),'R',0)-273.15
                 wb1 = HAPropsSI('W','Twb',WB,'P',p,'R',1)+0.002
                 wb0 = HAPropsSI('W','Twb',int(WB),'P',int(p),'R',0.0)
