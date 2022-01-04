@@ -64,7 +64,7 @@ Work on reducing display time
 
 Work on manipulating exsisting poinnts in Ultimate version
 
-# Creator: Prathamesh Nachane (Robin)
+# Creator: Prathamesh Nachane
 
 prathamesh.nachane@gmail.com
 
