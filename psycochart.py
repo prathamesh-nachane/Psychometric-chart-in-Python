@@ -6,6 +6,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from CoolProp.HumidAirProp import HAPropsSI
+import math
 '''Function to plot psychometric chart'''
 def plot_psy_chart(x_low_limit = -10,x_upp_limit = 60,y_low_limit = 0,y_upp_limit = 0.03, p = 101325, RH_lines = 'y',H_lines = 'y',WB_lines = 'y'):    
     Tdb = np.linspace(x_low_limit ,x_upp_limit,100)+273.15
@@ -43,9 +44,10 @@ def plot_psy_chart(x_low_limit = -10,x_upp_limit = 60,y_low_limit = 0,y_upp_limi
             for WB in WB_lines:
                 #Line goes from saturation to zero humidity ratio for this enthalpy
                 T1 = HAPropsSI('T','Twb',WB,'P',p,'R',1.0)-273.15-2
-                T0 = HAPropsSI('T','Twb',WB,'P',p,'R',0.0)-273.15
-                wb1 = HAPropsSI('W','Twb',WB,'P',p,'R',1.0)+0.002
-                wb0 = HAPropsSI('W','Twb',WB,'P',p,'R',0.0)
+                print(WB,p)
+                T0 = HAPropsSI('T','Twb',int(WB),'P',int(p),'R',0)-273.15
+                wb1 = HAPropsSI('W','Twb',WB,'P',p,'R',1)+0.002
+                wb0 = HAPropsSI('W','Twb',int(WB),'P',int(p),'R',0.0)
                 ax.plot(np.r_[T1,T0],np.r_[wb1,wb0],'m--',lw=1, alpha = 0.5)
                 string = r'$WB$='+'{s:0.0f}'.format(s=(WB-273)) +' [C]'
                 bbox_opts = dict(boxstyle='square,pad=0.0',fc='white',ec='None',alpha = 0)
@@ -92,3 +94,8 @@ def calc_prop_of(counter,xdata,ydata):
         e ='-- H = '+ str(round((HAPropsSI('H','T',xdata+273,'P',101325,'W',ydata)/1000),3)) + ' kJ/kg'
 #       f =' W = '+ str(100*HAPropsSI('Twb','T',xdata+273,'P',101325,'W',ydata)) +' [C]' 
         return(str(a+b+c+d+e)) 
+
+plt.close("all") 
+figure,axes = plot_psy_chart(x_low_limit = -10,x_upp_limit = 60,y_low_limit = 0,y_upp_limit = 0.03, p = 101325, RH_lines = 'y',H_lines = 'y',WB_lines = 'y')
+a = [[50,0.007],[40, 0.006],[30,0.003]]
+figure,axes = plot_points(a,figure,axes, col = 'r', typ = '-', grid = 'on') 
